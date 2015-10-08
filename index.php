@@ -87,7 +87,16 @@ function verificar_dc($entidad, $oficina, $dc, $cuenta ){
 }
 
 // Si no recibo ningún parámetro por POST ...
-if ( !$_POST ) {
+if ( isset($_POST['revision']) ) {
+	// Cargamos de nuevo el formulario desde la página de error
+	// Filtramos los datos ...
+	$entidad = htmlspecialchars($_POST['entidad'], ENT_QUOTES, 'UTF-8');
+	$oficina = htmlspecialchars($_POST['oficina'], ENT_QUOTES, 'UTF-8');
+	$dc = htmlspecialchars($_POST['dc'], ENT_QUOTES, 'UTF-8');
+	$cuenta = htmlspecialchars($_POST['cuenta'], ENT_QUOTES, 'UTF-8');
+
+	include 'formulario_ccc.html.php';
+}else if ( !$_POST ) {
 	// Cargo el formulario
  	include 'formulario_ccc.html.php';
 }else{

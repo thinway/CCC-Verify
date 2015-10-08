@@ -9,22 +9,22 @@
 	<form action="" method="POST">
 		<div>
 			<label for="entidad">Entidad:
-				<input type="text" name="entidad" required>
+				<input type="text" name="entidad" value="<?php echo isset($entidad) ? $entidad : ""; ?>" required>
 			</label>
 		</div>
 		<div>
 			<label for="oficina">Oficina: 
-				<input type="text" name="oficina" required>
+				<input type="text" name="oficina" value="<?php echo isset($oficina) ? $oficina : ""; ?>" required>
 			</label>
 		</div>
 		<div>
 			<label for="dc">DC: 
-				<input type="text" name="dc" required>
+				<input type="text" name="dc" value="<?php echo isset($dc) ? $dc : ""; ?>" required>
 			</label>
 		</div>
 		<div>
 			<label for="cuenta">Cuenta:
-				<input type="text" name="cuenta" required>
+				<input type="text" name="cuenta" value="<?php echo isset($cuenta) ? $cuenta : ""; ?>" required>
 			</label>
 		</div>
 		<div>
