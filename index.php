@@ -27,6 +27,10 @@ function verificar_datos($entidad, $oficina, $dc, $cuenta) {
 		$errores['longitud_campos'] = true;
 	}
 
+	if ( !is_numeric($entidad) || !is_numeric($oficina) || !is_numeric($dc) || !is_numeric($cuenta) ) {
+		$errores['alfanumericos'] = true;
+	}
+
 	return $errores; // Se devuelve el array de errores
 }
 
@@ -96,7 +100,7 @@ if ( !$_POST ) {
 
 	// Si los datos introducidos no son correctos porque falta alguno o las longitudes
 	// no coinciden con la especificación ...
-	if( $error = verificar_datos($entidad, $oficina, $dc, $cuenta) ){
+	if( $lista_errores = verificar_datos($entidad, $oficina, $dc, $cuenta) ){
 		// Se carga la página de error
 		include 'error.html.php';
 	}else{
@@ -106,7 +110,7 @@ if ( !$_POST ) {
 			include 'exito.html.php';
 		} else {
 			// Si no es correcta cargamos un nuevo tipo de error en nuestro array de errores
-			$error['error_dc'] = true;
+			$lista_errores['error_dc'] = true;
 
 			// Y cargamos la página de error
 			include 'error.html.php';
